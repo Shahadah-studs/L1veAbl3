@@ -111,7 +111,7 @@ export class HouseBuilder3D {
       if (e.button === 2) {
         const hits = this.raycaster.intersectObjects(this.objects);
         if (hits.length > 0) {
-          const target = hits.object;
+          const target = hits[0].object;
           this.scene.remove(target);
           this.objects = this.objects.filter(o => o !== target);
           this.itemsData = this.itemsData.filter(i => !(i.x === target.userData.x && i.z === target.userData.z));
@@ -123,7 +123,7 @@ export class HouseBuilder3D {
       if (e.button === 0) {
         const hits = this.raycaster.intersectObject(this.plane);
         if (hits.length > 0) {
-          const pt = hits.point;
+          const pt = hits[0].point;
           const x = Math.round(pt.x);
           const z = Math.round(pt.z);
           const type = (document.getElementById('item-type') as HTMLSelectElement).value;
