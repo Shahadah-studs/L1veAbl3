@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L1veAbl3 — 3D House, Routines, Smart Calendar & Arcade</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <nav class="sidebar">
+      <div class="logo">L1veAbl3</div>
+      <button class="nav-btn active" data-tab="house">🏠 3D House Map</button>
+      <button class="nav-btn" data-tab="routines">✅ Daily Routines</button>
+      <button class="nav-btn" data-tab="calendar">📅 Smart Calendar</button>
+      <button class="nav-btn" data-tab="games">🎮 Game Hub</button>
+      <div class="badge">Synced locally</div>
+    </nav>
+
+    <main class="content">
+      <!-- 3D INTERACTIVE HOUSE MAP -->
+      <section id="tab-house" class="tab-panel active">
+        <header class="panel-header">
+          <h2>🏠 3D Interactive House Builder</h2>
+          <div class="controls">
+            <select id="item-type">
+              <option value="wall">🧱 Wall Block</option>
+              <option value="bed">🛏️ Bed / Lounge</option>
+              <option value="desk">💻 Gaming / Work Desk</option>
+              <option value="plant">🪴 Indoor Plant</option>
+              <option value="light">💡 Neon Smart Lamp</option>
+            </select>
+            <button id="export-house">💾 Export JSON</button>
+            <button id="clear-house" class="danger">Clear Map</button>
+          </div>
+        </header>
+        <p class="hint">Left-click grid to place • Right-click object to remove • Drag to rotate • Scroll to zoom</p>
+        <div id="three-container"></div>
+      </section>
+
+      <!-- DAILY ROUTINE CHECKLIST -->
+      <section id="tab-routines" class="tab-panel">
+        <header class="panel-header">
+          <h2>✅ Daily Routine Checklist</h2>
+          <div class="progress-wrap">
+            <span id="routine-progress-text">0% Done</span>
+            <div class="progress-bar"><div id="routine-progress-fill"></div></div>
+          </div>
+        </header>
+        <div class="input-row">
+          <input type="text" id="routine-input" placeholder="Add a daily habit (e.g., Hydrate, Workout, Code)..." />
+          <select id="routine-time">
+            <option value="Morning">🌅 Morning</option>
+            <option value="Afternoon">☀️ Afternoon</option>
+            <option value="Evening">🌙 Evening</option>
+          </select>
+          <button id="add-routine-btn">Add Habit</button>
+        </div>
+        <ul id="routine-list" class="card-list"></ul>
+      </section>
+
+      <!-- SMART INTERACTIVE CALENDAR -->
+      <section id="tab-calendar" class="tab-panel">
+        <header class="panel-header">
+          <h2>📅 Smart Interactive Calendar</h2>
+          <button id="smart-auto-schedule">✨ Smart Auto-Schedule Free Day</button>
+        </header>
+        <div class="calendar-layout">
+          <div id="calendar-grid" class="calendar-grid"></div>
+          <div class="event-drawer">
+            <h3 id="selected-date-label">Select a Date</h3>
+            <input type="text" id="event-title" placeholder="Task or event name..." />
+            <select id="event-priority">
+              <option value="high">🔴 High Priority</option>
+              <option value="medium">🟡 Medium Priority</option>
+              <option value="low">🟢 Chill / Personal</option>
+            </select>
+            <button id="save-event-btn">Add Event</button>
+            <ul id="day-events-list" class="card-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- GAME HUB -->
+      <section id="tab-games" class="tab-panel">
+        <header class="panel-header">
+          <h2>L1veAbl3 Game Hub</h2>
+          <div class="game-selector">
+            <button class="game-switch active" data-game="snake">🐍 Cyber Snake</button>
+            <button class="game-switch" data-game="clicker">⚡ Reflex Aim</button>
+            <button class="game-switch" data-game="pong">🏓 Neon Pong</button>
+          </div>
+        </header>
+        <div class="game-stage">
+          <div class="scoreboard">Score: <span id="game-score">0</span> | Best: <span id="game-high">0</span></div>
+          <canvas id="game-canvas" width="540" height="400"></canvas>
+          <button id="start-game-btn">Restart Game</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
