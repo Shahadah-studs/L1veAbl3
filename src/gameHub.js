@@ -82,7 +82,7 @@ export class GameHub {
   }
 
   tickSnake() {
-    const head = { x: this.snake.x + this.dx, y: this.snake.y + this.dy };
+    const head = { x: this.snake[0].x + this.dx, y: this.snake[0].y + this.dy };
     if (head.x < 0 || head.x >= 540 || head.y < 0 || head.y >= 400 ||
         this.snake.some(s => s.x === head.x && s.y === head.y)) {
       clearInterval(this.loopId);
